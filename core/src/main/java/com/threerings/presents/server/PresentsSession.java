@@ -1050,6 +1050,7 @@ public class PresentsSession
 
         public void unsubscribe ()
         {
+            // TODO - remove child subscriptions?
             object.removeSubscriber(this);
             unsubscribedFromObject(object);
         }
@@ -1058,24 +1059,33 @@ public class PresentsSession
         public void objectAvailable (DObject dobj)
         {
             if (postMessage(new ObjectResponse<DObject>(dobj), _oconn)) {
-                _firstEventId = _omgr.getNextEventId(false);
-                object = dobj;
-                ClientProxy orec;
-                synchronized (_subscrips) {
-                    // make a note of this new subscription
-                    orec = _subscrips.put(dobj.getOid(), this);
-                }
-                if (orec != null) {
-                    log.warning("Replacing existing subscription.", "oid", dobj.getOid(),
-                        "client", PresentsSession.this);
-                    orec.unsubscribe();
-                }
-                subscribedToObject(dobj);
+                setSubscribedObject(dobj, _omgr.getNextEventId(false));
 
             } else {
                 // if we failed to send the object response, unsubscribe
                 dobj.removeSubscriber(this);
             }
+        }
+
+        protected void setSubscribedObject (DObject dobj, long firstEventId) {
+            _firstEventId = firstEventId;
+            object = dobj;
+            ClientProxy orec;
+            synchronized (_subscrips) {
+                // make a note of this new subscription
+                orec = _subscrips.put(dobj.getOid(), this);
+            }
+            if (orec != null) {
+                log.warning("Replacing existing subscription.", "oid", dobj.getOid(),
+                        "client", PresentsSession.this);
+                orec.unsubscribe();
+            }
+            for (DObject child : dobj.getChildren()) {
+                ClientProxy childProxy = createProxySubscriber();
+                child.addSubscriber(childProxy);
+                childProxy.setSubscribedObject(child, firstEventId);// Recurse!
+            }
+            subscribedToObject(dobj);
         }
 
         // from interface ProxySubscriber

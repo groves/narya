@@ -57,6 +57,8 @@ public class DObject // extends EventDispatcher
         return _omgr;
     }
 
+    public function get children () :Array { return []; }
+
     public function addSubscriber (sub :Subscriber) :void
     {
         if (_subscribers == null) {

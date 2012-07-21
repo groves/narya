@@ -21,6 +21,7 @@
 
 package com.threerings.presents.dobj;
 
+import java.util.Collections;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -99,6 +100,11 @@ public class DObject
     public DObjectManager getManager ()
     {
         return _omgr;
+    }
+
+    public Iterable<DObject> getChildren ()
+    {
+        return Collections.emptyList();
     }
 
     /**
@@ -549,7 +555,14 @@ public class DObject
      */
     public void setManager (DObjectManager omgr)
     {
+        log.warning("setting manager", "obj", this);
         _omgr = omgr;
+        if (omgr instanceof RootDObjectManager) {
+            for (DObject child : getChildren()) {
+                log.warning("Registering child", "obj", child);
+                ((RootDObjectManager)omgr).registerObject(child);
+            }
+        }
     }
 
     /**

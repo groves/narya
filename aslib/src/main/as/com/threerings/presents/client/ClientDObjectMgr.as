@@ -258,12 +258,14 @@ public class ClientDObjectMgr
      */
     protected function registerObjectAndNotify (obj :DObject) :void
     {
+        log.warning("Registering", "root", obj);
         // let the object know that we'll be managing it
         obj.setManager(this);
 
         var oid :int = obj.getOid();
         // stick the object into the proxy object table
         _ocache.put(oid, obj);
+        registerChildren(obj);
 
         // let the penders know that the object is available
         var req :PendingRequest = (_penders.remove(oid) as PendingRequest);
@@ -280,6 +282,15 @@ public class ClientDObjectMgr
             obj.addSubscriber(target);
             // and let them know that the object is in
             target.objectAvailable(obj);
+        }
+    }
+
+    protected function registerChildren (obj :DObject) :void {
+        for each (var child :DObject in obj.children) {
+            log.warning("Registering", "child", child);
+            child.setManager(this);
+            _ocache.put(child.getOid(), child);
+            registerChildren(child);
         }
     }
 
@@ -440,6 +451,8 @@ class PendingRequest
         targets.push(target);
     }
 }
+
+import com.threerings.presents.dobj.DObject;
 
 /** Used to manage pending object flushes. */
 class FlushRecord
