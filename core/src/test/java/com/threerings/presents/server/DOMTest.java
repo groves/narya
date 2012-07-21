@@ -21,6 +21,10 @@
 
 package com.threerings.presents.server;
 
+import com.google.common.collect.Lists;
+import java.util.List;
+import com.threerings.presents.dobj.AttributeChangedEvent;
+import org.junit.After;
 import org.junit.Test;
 
 import com.threerings.presents.data.TestObject;
@@ -29,6 +33,7 @@ import com.threerings.presents.dobj.AttributeChangedEvent;
 import com.threerings.presents.dobj.ElementUpdateListener;
 import com.threerings.presents.dobj.ElementUpdatedEvent;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -65,14 +70,16 @@ public class DOMTest extends PresentsTestBase
 
         // and run the object manager
         _omgr.run();
+        for (int ii = 0; ii < fields.length; ii++) {
+            assertEquals(fields[ii], events.get(ii).getName());
+            assertEquals(values[ii], events.get(ii).getValue());
+        }
     }
 
     // from interface AttributeChangeListener
     public void attributeChanged (AttributeChangedEvent event)
     {
-        assertTrue(fields[_fcount] + " == " + values[_fcount],
-                   event.getName().equals(fields[_fcount]) &&
-                   event.getValue().equals(values[_fcount]));
+        events.add(event);
 
         // shutdown once we receive our last update
         if (++_fcount == fields.length) {
@@ -95,7 +102,9 @@ public class DOMTest extends PresentsTestBase
     protected Object[] fields = { TestObject.FOO, TestObject.BAR, TestObject.FOO, TestObject.BAR };
 
     // the values we'll receive via attribute changed events
-    protected Object[] values = { new Integer(99), "hoopie", new Integer(25), "howdy" };
+    protected Object[] values = { 99, "hoopie", 25, "howdy" };
+
+    protected List<AttributeChangedEvent> events = Lists.newArrayList();
 
     protected PresentsDObjectMgr _omgr = getInstance(PresentsDObjectMgr.class);
 }
