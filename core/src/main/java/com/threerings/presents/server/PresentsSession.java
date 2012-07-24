@@ -1050,16 +1050,33 @@ public class PresentsSession
 
         public void unsubscribe ()
         {
-            // TODO - remove child subscriptions?
+            List<ClientProxy> childProxies = _childProxies;
+            _childProxies = null;
+            if (childProxies != null) {
+                for (ClientProxy child : childProxies) {
+                    log.warning("Unsubscribing", "child", child);
+                    child.unsubscribe();
+                }
+            }
+            if (_parentProxy != null) {
+                _parentProxy.childUnsubscribed(this);
+                _parentProxy = null;
+            }
             object.removeSubscriber(this);
             unsubscribedFromObject(object);
+        }
+
+        protected void childUnsubscribed (ClientProxy child) {
+            if (_childProxies != null) {
+                log.warning("Removing", "childObj", child.object, "obj", object, "removed", _childProxies.remove(child));
+            }
         }
 
         // from interface ProxySubscriber
         public void objectAvailable (DObject dobj)
         {
             if (postMessage(new ObjectResponse<DObject>(dobj), _oconn)) {
-                setSubscribedObject(dobj, _omgr.getNextEventId(false));
+                setSubscribedObject(dobj, _omgr.getNextEventId(false), null);
 
             } else {
                 // if we failed to send the object response, unsubscribe
@@ -1067,7 +1084,7 @@ public class PresentsSession
             }
         }
 
-        protected void setSubscribedObject (DObject dobj, long firstEventId) {
+        protected void setSubscribedObject (DObject dobj, long firstEventId, ClientProxy parent) {
             _firstEventId = firstEventId;
             object = dobj;
             ClientProxy orec;
@@ -1083,7 +1100,9 @@ public class PresentsSession
             for (DObject child : dobj.getChildren()) {
                 ClientProxy childProxy = createProxySubscriber();
                 child.addSubscriber(childProxy);
-                childProxy.setSubscribedObject(child, firstEventId);// Recurse!
+                childProxy.setSubscribedObject(child, firstEventId, this);// Recurse!
+                childProxy._parentProxy = parent;
+                _childProxies.add(childProxy);
             }
             subscribedToObject(dobj);
         }
@@ -1144,6 +1163,9 @@ public class PresentsSession
         protected long _firstEventId;
         // the connection that was active at the time we were constructed
         protected PresentsConnection _oconn = getConnection();
+
+        protected List<ClientProxy> _childProxies = Lists.newArrayListWithExpectedSize(4);
+        protected ClientProxy _parentProxy;
     }
 
     /**

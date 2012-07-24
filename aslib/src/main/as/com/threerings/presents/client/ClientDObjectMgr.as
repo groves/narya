@@ -148,7 +148,8 @@ public class ClientDObjectMgr
         }
 
         // if we didn't find a delay registration, flush immediately
-        flushObject(obj);
+        log.warning("Removed last subscriber", "obj", obj);
+        flushObject(obj, /*unsubscribe=*/true);
     }
 
     /**
@@ -372,7 +373,7 @@ public class ClientDObjectMgr
      * Flushes a distributed object subscription, issuing an unsubscribe
      * request to the server.
      */
-    protected function flushObject (obj :DObject) :void
+    protected function flushObject (obj :DObject, unsubscribe :Boolean) :void
     {
         // move this object into the dead pool so that we don't claim to
         // have it around anymore; once our unsubscribe message is
@@ -381,10 +382,14 @@ public class ClientDObjectMgr
         _ocache.remove(ooid);
         obj.setManager(null);
         _dead.put(ooid, obj);
+        for each (var child :DObject in obj.children) {
+            log.warning("Unsubscibing", "child", child);
+            flushObject(child, false);
+        }
 
         // ship off an unsubscribe message to the server; we'll remove the
         // object from our table when we get the unsub ack
-        _comm.postMessage(new UnsubscribeRequest(ooid));
+        if (unsubscribe) _comm.postMessage(new UnsubscribeRequest(ooid));
     }
 
     /**
@@ -398,7 +403,7 @@ public class ClientDObjectMgr
             var rec :FlushRecord = (_flushes.get(oid) as FlushRecord);
             if (rec.expire <= now) {
                 _flushes.remove(oid);
-                flushObject(rec.obj);
+                flushObject(rec.obj, true);
             }
         }
     }

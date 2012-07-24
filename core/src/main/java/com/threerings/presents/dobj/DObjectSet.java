@@ -12,6 +12,8 @@ import java.lang.Iterable;
 import com.threerings.presents.dobj.DObject;
 import java.util.Set;
 import com.google.common.collect.Sets;
+import static com.threerings.presents.Log.log;
+
 
 public class DObjectSet<E extends DObject> implements Iterable<E>, Streamable {
     public static <E extends DObject> DObjectSet<E> newSet()  { return new DObjectSet<E>(); }
@@ -19,7 +21,7 @@ public class DObjectSet<E extends DObject> implements Iterable<E>, Streamable {
     public Iterator<E> iterator() { return _objs.iterator(); }
 
     // TODO handle post registration adds
-    public void add(E obj) { _objs.add(obj); }
+    public void add(E obj) { log.warning("Adding", "obj", obj, "added", _objs.add(obj), "size", _objs.size()); }
 
     /** Custom writer method. @see Streamable. */
     public void writeObject (ObjectOutputStream out) throws IOException {
