@@ -25,7 +25,6 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
 import com.threerings.util.Joiner;
-import com.threerings.util.StreamableArrayList;
 
 /**
  * Used to manage and submit groups of events on a collection of distributed objects in a single
@@ -43,7 +42,7 @@ public class CompoundEvent extends DEvent
         super(targetOid);
 
         if (targetOid != 0) {
-            _events = new StreamableArrayList();
+            _events = new Array();
         }
     }
 
@@ -107,10 +106,10 @@ public class CompoundEvent extends DEvent
     override public function readObject (ins :ObjectInputStream) :void
     {
         super.readObject(ins);
-        _events = StreamableArrayList(ins.readObject());
+        _events = ins.readObject() as Array;
     }
 
     /** A list of the events associated with this compound event. */
-    protected var _events :StreamableArrayList;
+    protected var _events :Array;
 }
 }
