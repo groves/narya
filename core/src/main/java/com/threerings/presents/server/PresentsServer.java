@@ -47,8 +47,6 @@ import com.threerings.presents.server.PresentsDObjectMgr.LongRunnable;
 import com.threerings.presents.server.net.DatagramChannelReader;
 import com.threerings.presents.server.net.PresentsConnectionManager;
 
-import com.threerings.crowd.server.PlaceManager;
-
 import com.threerings.nio.conman.ConnectionManager;
 import com.threerings.nio.conman.ServerSocketChannelAcceptor;
 
@@ -154,14 +152,6 @@ public class PresentsServer
         runServer(new PresentsModule());
     }
 
-    /** Legacy static reference to the main distributed object manager. Don't use this. If you're
-     * writing a game, use {@link PlaceManager#_omgr}. */
-    @Deprecated public static PresentsDObjectMgr omgr;
-
-    /** Legacy static reference to the invocation manager. Don't use this. If you're
-     * writing a game, use {@link PlaceManager#_invmgr}. */
-    @Deprecated public static InvocationManager invmgr;
-
     /**
      * Initializes all of the server services and prepares for operation.
      */
@@ -174,10 +164,6 @@ public class PresentsServer
             "jvm", si.jvmToString());
 
         registerSignalHandlers(injector);
-
-        // initialize our deprecated legacy static references
-        omgr = _omgr;
-        invmgr = _invmgr;
 
         // configure the dobject manager with our access controller
         _omgr.setDefaultAccessController(createDefaultObjectAccessController());
