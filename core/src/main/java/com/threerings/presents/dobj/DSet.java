@@ -203,19 +203,6 @@ public class DSet<E extends DSet.Entry>
      * Returns an iterator over the entries of this set. It does not support modification (nor
      * iteration while modifications are being made to the set). It should not be kept around as it
      * can quickly become out of date.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    public Iterator<E> entries ()
-    {
-        return iterator();
-    }
-
-    /**
-     * Returns an iterator over the entries of this set. It does not support modification (nor
-     * iteration while modifications are being made to the set). It should not be kept around as it
-     * can quickly become out of date.
      */
     public Iterator<E> iterator ()
     {
@@ -277,37 +264,6 @@ public class DSet<E extends DSet.Entry>
                 return DSet.this.size();
             }
         };
-    }
-
-    /**
-     * Copies the elements of this distributed set into the supplied array. If the array is not
-     * large enough to hold all of the elements, as many as fit into the array will be copied. If
-     * the <code>array</code> argument is null, an object array of sufficient size to contain all
-     * of the elements of this set will be created and returned.
-     *
-     * @deprecated use {@link #clone} or add this to an ArrayList. Arrays are an untypesafe
-     * quagmire.
-     */
-    @Deprecated
-    public E[] toArray (E[] array)
-    {
-        if (array == null) {
-            @SuppressWarnings("unchecked") E[] copy = (E[])new Entry[size()];
-            array = copy;
-        }
-        System.arraycopy(_entries, 0, array, 0, array.length);
-        return array;
-    }
-
-    /**
-     * @deprecated use {@link #clone} or add this to an ArrayList. Arrays are an untypesafe
-     * quagmire.
-     */
-    @Deprecated
-    public Object[] toArray (Object[] array)
-    {
-        @SuppressWarnings("unchecked") E[] casted = (E[])array;
-        return toArray(casted);
     }
 
     /**
@@ -447,17 +403,6 @@ public class DSet<E extends DSet.Entry>
     protected int getWarningSize ()
     {
         return 2048;
-    }
-
-    /**
-     * Generates a shallow copy of this object in a type safe manner.
-     *
-     * @deprecated clone() works just fine now.
-     */
-    @Deprecated
-    public DSet<E> typedClone ()
-    {
-        return clone();
     }
 
     /**

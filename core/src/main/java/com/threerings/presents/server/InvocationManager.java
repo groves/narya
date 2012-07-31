@@ -245,15 +245,6 @@ public class InvocationManager
     }
 
     /**
-     * @deprecated use {@link #registerDispatcher(InvocationDispatcher)}.
-     */
-    @Deprecated public <T extends InvocationMarshaller<?>> T registerDispatcher (
-        InvocationDispatcher<T> dispatcher, boolean bootstrap)
-    {
-        return registerDispatcher(dispatcher, null);
-    }
-
-    /**
      * Registers the supplied invocation dispatcher, returning a marshaller that can be used to
      * send requests to the provider for whom the dispatcher is proxying.
      *
