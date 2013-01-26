@@ -21,7 +21,7 @@
 
 package com.threerings.io.streamers {
 
-import aspire.util.ByteEnum;
+import com.threerings.util.ByteEnum;
 
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
