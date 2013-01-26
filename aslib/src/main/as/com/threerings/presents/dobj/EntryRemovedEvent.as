@@ -25,8 +25,8 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
 import com.threerings.util.Boxed;
-import com.threerings.util.Joiner;
-import com.threerings.util.Log;
+import aspire.util.Joiner;
+import aspire.util.Log;
 
 /**
  * An entry removed event is dispatched when an entry is removed from a

@@ -29,9 +29,9 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.Streamable;
 
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Joiner;
-import com.threerings.util.Log;
+import aspire.util.ClassUtil;
+import aspire.util.Joiner;
+import aspire.util.Log;
 
 public class DObject // extends EventDispatcher
     implements Streamable

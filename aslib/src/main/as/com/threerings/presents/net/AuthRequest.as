@@ -24,7 +24,7 @@ package com.threerings.presents.net {
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.TypedArray;
 
-import com.threerings.util.StringUtil;
+import aspire.util.StringUtil;
 
 public class AuthRequest extends UpstreamMessage
 {

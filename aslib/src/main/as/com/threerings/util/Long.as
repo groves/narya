@@ -21,6 +21,9 @@
 
 package com.threerings.util {
 
+import aspire.util.Hashable;
+import aspire.util.Util;
+
 import flash.utils.ByteArray;
 import flash.utils.Endian;
 

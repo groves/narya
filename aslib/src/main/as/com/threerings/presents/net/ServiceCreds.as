@@ -25,7 +25,7 @@ import com.adobe.crypto.MD5;
 
 import com.threerings.io.ObjectOutputStream;
 
-import com.threerings.util.Joiner;
+import aspire.util.Joiner;
 
 /**
  * Extends the basic credentials to provide bureau-specific fields.

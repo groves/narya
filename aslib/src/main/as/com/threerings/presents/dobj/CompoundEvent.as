@@ -24,7 +24,7 @@ package com.threerings.presents.dobj {
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
-import com.threerings.util.Joiner;
+import aspire.util.Joiner;
 
 /**
  * Used to manage and submit groups of events on a collection of distributed objects in a single

@@ -21,6 +21,8 @@
 
 package com.threerings.io {
 
+import aspire.util.ByteEnum;
+
 import flash.utils.ByteArray;
 import flash.utils.Dictionary;
 
@@ -34,10 +36,10 @@ import com.threerings.io.streamers.NumberStreamer;
 import com.threerings.io.streamers.SetStreamer;
 import com.threerings.io.streamers.StringStreamer;
 
-import com.threerings.util.ByteEnum;
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Enum;
-import com.threerings.util.Log;
+import aspire.util.ByteEnum;
+import aspire.util.ClassUtil;
+import aspire.util.Enum;
+import aspire.util.Log;
 
 public class Streamer
 {

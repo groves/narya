@@ -21,7 +21,7 @@
 
 package com.threerings.presents.client {
 
-import com.threerings.util.Log;
+import aspire.util.Log;
 
 /**
  * Provides the basic functionality used to dispatch invocation

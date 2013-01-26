@@ -21,6 +21,8 @@
 
 package com.threerings.util {
 
+import aspire.util.Hashable;
+
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.Streamable;

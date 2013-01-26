@@ -21,6 +21,11 @@
 
 package com.threerings.util {
 
+import aspire.util.ClassUtil;
+import aspire.util.Comparable;
+import aspire.util.Hashable;
+import aspire.util.StringUtil;
+
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.Streamable;

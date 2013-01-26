@@ -25,7 +25,7 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
 import com.threerings.util.Boxed;
-import com.threerings.util.Joiner;
+import aspire.util.Joiner;
 
 /**
  * An attribute changed event is dispatched when a single attribute of a

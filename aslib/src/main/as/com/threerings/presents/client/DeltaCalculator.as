@@ -23,8 +23,8 @@ package com.threerings.presents.client {
 
 import flash.utils.getTimer;
 
-import com.threerings.util.Arrays;
-import com.threerings.util.Log;
+import aspire.util.Arrays;
+import aspire.util.Log;
 
 import com.threerings.presents.net.PingRequest;
 import com.threerings.presents.net.PongResponse;

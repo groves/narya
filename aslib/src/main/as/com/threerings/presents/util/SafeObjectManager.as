@@ -23,7 +23,7 @@ package com.threerings.presents.util {
 
 import flash.utils.Dictionary;
 
-import com.threerings.util.Log;
+import aspire.util.Log;
 
 import com.threerings.presents.dobj.DObject;
 import com.threerings.presents.dobj.DObjectManager;

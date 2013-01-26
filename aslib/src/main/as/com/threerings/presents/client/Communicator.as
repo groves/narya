@@ -34,7 +34,7 @@ import com.threerings.io.FrameReader;
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
-import com.threerings.util.Log;
+import aspire.util.Log;
 
 import com.threerings.presents.data.AuthCodes;
 import com.threerings.presents.net.AuthRequest;

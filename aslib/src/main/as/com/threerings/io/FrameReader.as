@@ -27,7 +27,7 @@ import flash.net.Socket;
 import flash.utils.ByteArray;
 import flash.utils.Endian;
 
-import com.threerings.util.Log;
+import aspire.util.Log;
 
 /**
  * Reads socket data until a complete frame is available.

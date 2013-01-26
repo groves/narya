@@ -24,7 +24,7 @@ package com.threerings.presents.dobj {
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
-import com.threerings.util.Joiner;
+import aspire.util.Joiner;
 
 /**
  * An object removed event is dispatched when an object is removed from an

@@ -25,8 +25,8 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.Streamable;
 
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Log;
+import aspire.util.ClassUtil;
+import aspire.util.Log;
 
 import com.threerings.presents.client.InvocationService_InvocationListener;
 

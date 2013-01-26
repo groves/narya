@@ -25,9 +25,9 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.Streamer;
 
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Map;
-import com.threerings.util.Maps;
+import aspire.util.ClassUtil;
+import aspire.util.Map;
+import aspire.util.Maps;
 
 /**
  * Streamer for Maps.

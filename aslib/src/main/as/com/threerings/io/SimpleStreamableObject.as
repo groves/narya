@@ -21,7 +21,7 @@
 
 package com.threerings.io {
 
-import com.threerings.util.Joiner;
+import aspire.util.Joiner;
 
 /**
  * A simple serializable object implements the {@link Streamable}

@@ -24,7 +24,7 @@ package com.threerings.presents.dobj {
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
-import com.threerings.util.Joiner;
+import aspire.util.Joiner;
 
 /**
  * Used to dispatch an invocation response from the server to the client.

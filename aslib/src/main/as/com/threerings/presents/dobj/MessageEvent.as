@@ -25,7 +25,7 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
 import com.threerings.util.Boxed;
-import com.threerings.util.Joiner;
+import aspire.util.Joiner;
 
 /**
  * A message event is used to dispatch a message to all subscribers of a

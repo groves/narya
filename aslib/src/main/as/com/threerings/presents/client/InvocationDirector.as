@@ -25,9 +25,9 @@ import flash.errors.IllegalOperationError;
 import flash.utils.getTimer;
 
 import com.threerings.util.Boxed;
-import com.threerings.util.Log;
-import com.threerings.util.Map;
-import com.threerings.util.Maps;
+import aspire.util.Log;
+import aspire.util.Map;
+import aspire.util.Maps;
 import com.threerings.util.Short;
 
 import com.threerings.presents.data.ClientObject;

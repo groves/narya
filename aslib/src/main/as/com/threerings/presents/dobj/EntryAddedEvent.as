@@ -24,8 +24,8 @@ package com.threerings.presents.dobj {
 import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 
-import com.threerings.util.Joiner;
-import com.threerings.util.Log;
+import aspire.util.Joiner;
+import aspire.util.Log;
 
 /**
  * An entry added event is dispatched when an entry is added to a {@link

@@ -23,8 +23,8 @@ package com.threerings.io {
 
 import flash.utils.ByteArray;
 
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Cloneable;
+import aspire.util.ClassUtil;
+import aspire.util.Cloneable;
 
 public dynamic class TypedArray extends Array
     implements Cloneable

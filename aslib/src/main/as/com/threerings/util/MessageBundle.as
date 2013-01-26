@@ -21,6 +21,10 @@
 
 package com.threerings.util {
 
+import aspire.util.Log;
+import aspire.util.StringUtil;
+import aspire.util.Util;
+
 import mx.resources.IResourceBundle;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;

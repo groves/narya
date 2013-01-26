@@ -25,9 +25,9 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.Streamer;
 
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Set;
-import com.threerings.util.Sets;
+import aspire.util.ClassUtil;
+import aspire.util.Set;
+import aspire.util.Sets;
 
 /**
  * Streamer for Sets.

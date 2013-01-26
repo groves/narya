@@ -24,10 +24,10 @@ import flash.events.EventDispatcher;
 import flash.events.TimerEvent;
 import flash.utils.Timer;
 
-import com.threerings.util.DelayUtil;
-import com.threerings.util.Log;
+import aspire.util.DelayUtil;
+import aspire.util.Log;
 import com.threerings.util.Long;
-import com.threerings.util.Throttle;
+import aspire.util.Throttle;
 
 import com.threerings.presents.client.InvocationService_ConfirmListener;
 import com.threerings.presents.data.ClientObject;

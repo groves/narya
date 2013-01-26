@@ -29,11 +29,11 @@ import com.threerings.io.Translations;
 import com.threerings.io.TypedArray;
 
 import com.threerings.util.Byte;
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Enum;
+import aspire.util.ClassUtil;
+import aspire.util.Enum;
 import com.threerings.util.Float;
 import com.threerings.util.Integer;
-import com.threerings.util.Log;
+import aspire.util.Log;
 import com.threerings.util.Long;
 import com.threerings.util.Short;
 import com.threerings.util.langBoolean;

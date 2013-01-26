@@ -26,8 +26,8 @@ import flash.errors.MemoryError;
 import flash.utils.ByteArray;
 import flash.utils.IDataInput;
 
-import com.threerings.util.ClassUtil;
-import com.threerings.util.Log;
+import aspire.util.ClassUtil;
+import aspire.util.Log;
 import com.threerings.util.Long;
 
 public class ObjectInputStream

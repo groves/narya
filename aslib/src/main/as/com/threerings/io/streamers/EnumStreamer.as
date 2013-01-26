@@ -25,7 +25,7 @@ import com.threerings.io.ObjectInputStream;
 import com.threerings.io.ObjectOutputStream;
 import com.threerings.io.Streamer;
 
-import com.threerings.util.Enum;
+import aspire.util.Enum;
 
 public class EnumStreamer extends Streamer
 {

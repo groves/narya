@@ -21,6 +21,9 @@
 
 package com.threerings.util {
 
+import aspire.util.ClassUtil;
+import aspire.util.Util;
+
 import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.net.ObjectEncoding;

@@ -21,8 +21,8 @@
 
 package com.threerings.presents.client {
 
-import com.threerings.util.Log;
-import com.threerings.util.StringUtil;
+import aspire.util.Log;
+import aspire.util.StringUtil;
 
 import com.threerings.presents.data.AuthCodes;
 
