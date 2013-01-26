@@ -52,15 +52,12 @@ public class CompoundEvent extends DEvent
      */
     public function postEvent (event :DEvent) :void
     {
-        _events.add(event);
+        _events.push(event);
     }
 
-    /**
-     * Returns the list of events contained within this compound event.  Don't mess with it.
-     */
     public function getEvents () :Array
     {
-        return _events.asArray();
+        return _events;
     }
 
     /**
@@ -69,11 +66,11 @@ public class CompoundEvent extends DEvent
     public function commit (omgr :DObjectManager) :void
     {
         // post this event onto the queue (but only if we actually accumulated some events)
-        switch (_events.size()) {
+        switch (_events.length) {
         case 0: // nothing doing
             break;
         case 1: // no point in being compound
-            omgr.postEvent(_events.get(0) as DEvent);
+            omgr.postEvent(_events[0] as DEvent);
             break;
         default: // now we're talking
             omgr.postEvent(this);
@@ -92,7 +89,7 @@ public class CompoundEvent extends DEvent
     override protected function toStringJoiner (j :Joiner) :void
     {
         super.toStringJoiner(j);
-        j.addArgsArray(_events.asArray());
+        j.addArgsArray(_events);
     }
 
     // from DObject
