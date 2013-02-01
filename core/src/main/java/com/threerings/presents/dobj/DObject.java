@@ -555,7 +555,6 @@ public class DObject
      */
     public void setManager (DObjectManager omgr)
     {
-        log.warning("setting manager", "obj", this);
         _omgr = omgr;
         if (omgr instanceof RootDObjectManager) {
             for (DObject child : getChildren()) {
